@@ -1,0 +1,11 @@
+Formulaire commande
+
+    Nom: Text input
+    Tel: Phone input
+    Adresse: Text input
+    Customization de la pizza: Drop down
+    Garnitures: Checkbox
+
+Suppression de commande:
+
+    Bouton à côté d'une commande qui amène à une page de traitement avec l'id en get.
