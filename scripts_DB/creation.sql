@@ -1,3 +1,5 @@
+/* Création de la structure de la base de données */
+
 DROP DATABASE IF EXISTS pizzeria;
 
 CREATE DATABASE IF NOT EXISTS pizzeria;
@@ -30,8 +32,7 @@ CREATE TABLE IF NOT EXISTS pizzas (
 CREATE TABLE IF NOT EXISTS pizzas_garnitures (
     pizza_id INT,
     garniture_id INT,
-    PRIMARY KEY(pizza_id),
-    PRIMARY KEY(garniture_id),
+    PRIMARY KEY(pizza_id, garniture_id),
     FOREIGN KEY (pizza_id) REFERENCES pizzas (id),
     FOREIGN KEY (garniture_id) REFERENCES garnitures (id)
 );
@@ -61,3 +62,28 @@ CREATE TRIGGER IF NOT EXISTS creation_commande
     END $$
 
 DELIMITER ;
+
+/* Insertion des données */
+
+INSERT INTO croutes (nom)
+    VALUES("Classique"),
+    ("Mince"),
+    ("Épaisse");
+
+INSERT INTO sauces (nom)
+    VALUES("Tomate"),
+    ("Spaghetti"),
+    ("Alfredo");
+
+INSERT INTO garnitures (nom)
+    VALUES("Pepperoni"),
+    ("Champignons"),
+    ("Oignons"),
+    ("Poivrons"),
+    ("Olives"),
+    ("Anchois"),
+    ("Bacon"),
+    ("Poulet"),
+    ("Maïs"),
+    ("Fromage"),
+    ("Piments forts");
