@@ -20,6 +20,8 @@ try:
     )
 except:
     db = 0
+
+# Affiche une erreur si la connection n'a pas pu être établie'
 @app.route('/')
 def index():
     if db == 0:
@@ -27,6 +29,7 @@ def index():
     else:
         return render_template('index.html')
 
+# Fait la sélection des options de pizza pour les afficher dans le formulaire de commande
 @app.route('/commander')
 def formulaire_commande():
     cursor = db.cursor(dictionary=True)
@@ -39,6 +42,7 @@ def formulaire_commande():
     cursor.close()
     return render_template('form_commande.html', croutes=croutes, sauces=sauces, garnitures=garnitures)
 
+# Place la commande avec les données en post vérifiées
 @app.route('/placer-commande', methods=['POST'])
 def ajouter_commande():
 
@@ -138,6 +142,7 @@ def ajouter_commande():
     cursor.close()
     return render_template("commande_reussite.html")
 
+# Sélectionne les commandes en attente, premier commandé premier affiché
 @app.route('/liste-commande')
 def listeCommandes():
     cursor = db.cursor(dictionary=True)
@@ -146,6 +151,7 @@ def listeCommandes():
     cursor.close()
     return render_template("liste_commandes.html", commandes=commandes_att)
 
+# Affiche une commande sélectionnée avec ses détails
 @app.route('/commande/<int:id>')
 def detailsCommande(id):
 
@@ -173,6 +179,7 @@ def detailsCommande(id):
 
     return render_template("commande.html", commande=commande, garnitures=garnitures)
 
+# Supprime la commande sélectionnée de la table des commandes en attente.
 @app.route('/terminer/<int:id>')
 def terminerCommande(id):
     cursor = db.cursor(dictionary=True)
