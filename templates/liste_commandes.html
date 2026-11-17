@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Index - Pizzeria Cheu Mario</title>
+    </head>
+    <body>
+        <h1>Pizzeria Cheu Mario</h1>
+        <hr>
+        <div>
+            <span><a href='./'>Accueil</a></span>
+            <span> | </span>
+            <span><a href='./commander'>Commander</a></span>
+            <span> | </span>
+            <span><a href='./liste-commande'>Voir les commandes</a></span>
+        </div>
+        <hr>
+        <h2>Liste des commandes</h2>
+        <ul>
+            {% for commande in commandes %}
+                <li>{{ commande.nom_client }} le {{ commande.temps_commande }} : Pizza croûte {{commande.croute}} sauce {{commande.sauce}} | <a href="/commande/{{commande.id}}">Voir les détails</a> | <a href="/terminer/{{commande.id}}">Terminer</a></li>
+            {% endfor %}
+        </ul>
+    </body>
+<html>

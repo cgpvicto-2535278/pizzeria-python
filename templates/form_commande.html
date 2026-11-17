@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Formulaire de commande - Pizzeria Cheu Mario</title>
+    </head>
+    <body>
+        <h1>Pizzeria Cheu Mario</h1>
+        <hr>
+        <div>
+            <span><a href='./'>Accueil</a></span>
+            <span> | </span>
+            <span><a href='./commander'>Commander</a></span>
+            <span> | </span>
+            <span><a href='./liste-commande'>Voir les commandes</a></span>
+        </div>
+        <hr>
+        <h2>Commande de Pizza</h2>
+        <form action='/placer-commande' method='POST' name='commande'>
+            <h3>Informations personnelles</h3>
+            <label for='nom'>Nom complet:</label>
+            <br>
+            <input type='text' name='nom' id='nom' maxlength=255 required>
+            <br>
+            <label for='adresse'>Adresse:</label>
+            <br>
+            <input type='text' name='adresse' id='adresse' maxlength=255 required>
+            <br>
+            <label for='num_tel'>Numéro de téléphone:</label>
+            <br>
+            <input type='text' name='num_tel' id='num_tel' maxlength=20 required>
+            <h3>Personnalisation de la Pizza</h3>
+            <label for='type_croute'>Sélection de croûte:</label>
+            <br>
+            <select name='type_croute' id='type_croute'>
+                {% for row in croutes %}
+                    <option value='{{row.id}}'>{{row.nom}}</option>
+                {% endfor %}
+            </select>
+            <br>
+            <label for='sauce'>Sélection de sauce:</label>
+            <br>
+            <select name='sauce' id='sauce'>
+                {% for row in sauces %}
+                    <option value='{{row.id}}'>{{row.nom}}</option>
+                {% endfor %}
+            </select>
+            <br>
+            <label for='garniture_1'>Choix de garnitures:</label>
+            <br>
+            <select name='garniture_1' id='garniture_1'>
+                <option value=0>Rien</option>
+                {% for row in garnitures %}
+                    <option value={{row.id}}>{{row.nom}}</option>
+                {% endfor %}
+            </select>
+            <br>
+            <select name='garniture_2' id='garniture_2'>
+                <option value=0>Rien</option>
+                {% for row in garnitures %}
+                    <option value={{row.id}}>{{row.nom}}</option>
+                {% endfor %}
+            </select>
+            <br>
+            <select name='garniture_3' id='garniture_3'>
+                <option value=0>Rien</option>
+                {% for row in garnitures %}
+                    <option value={{row.id}}>{{row.nom}}</option>
+                {% endfor %}
+            </select>
+            <br>
+             <select name='garniture_4' id='garniture_4'>
+                <option value=0>Rien</option>
+                {% for row in garnitures %}
+                    <option value={{row.id}}>{{row.nom}}</option>
+                {% endfor %}
+            </select>
+            <br><br>
+            <input type=submit value='Soumettre'>
+        </form>
+    </body>
+<html>
